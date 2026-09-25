@@ -100,9 +100,10 @@ fn run(term: &mut ratatui::DefaultTerminal, url: &str, secs: &[Section]) -> std:
 
 const USAGE: &str = "usage: headlint [--json] [--validate] <url>
 
-  (なし)      TUI で表示
-  --json      結果を JSON で標準出力
-  --validate  結果をテキストで出力し、✗ が1つでもあれば exit 1（--json と併用可）";
+  (no flags)  show results in the TUI
+  --json      print results as JSON to stdout
+  --validate  print results as text and exit 1 if any ✗ (can be combined with --json)
+  -h, --help  show this help";
 
 fn main() {
     let (mut json, mut validate, mut target) = (false, false, None);
