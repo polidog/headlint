@@ -34,3 +34,7 @@ TUI のキー: `←/→` `h/l` `Tab` でタブ切替、`↑/↓` `j/k` `PgUp/PgD
 ```
 
 `level` は `ok` / `warn` / `ng` / `info`。`ok` は `ng` が 1 つもないとき `true`。
+
+## License
+
+MIT
