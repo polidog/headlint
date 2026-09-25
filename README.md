@@ -1,18 +1,19 @@
-# seo-checker
+# headlint
 
-URL を渡すと OGP・ファビコン・robots まわりをチェックする TUI / CLI ツール。
+ページの `<head>`（OGP・title・favicon・canonical・meta robots）と robots.txt を lint する TUI / CLI ツール。
+
 
 ```
-cargo install --git https://github.com/polidog/seo-checker
+cargo install --git https://github.com/polidog/headlint
 ```
 
 ## 使い方
 
 ```
-seo-checker polidog.jp                     # TUI で表示
-seo-checker --json polidog.jp              # JSON で出力
-seo-checker --validate polidog.jp          # テキストで出力し、✗ があれば exit 1
-seo-checker --json --validate polidog.jp   # JSON で出力し、✗ があれば exit 1
+headlint polidog.jp                     # TUI で表示
+headlint --json polidog.jp              # JSON で出力
+headlint --validate polidog.jp          # テキストで出力し、✗ があれば exit 1
+headlint --json --validate polidog.jp   # JSON で出力し、✗ があれば exit 1
 ```
 
 TUI のキー: `←/→` `h/l` `Tab` でタブ切替、`↑/↓` `j/k` `PgUp/PgDn` でスクロール、`q` で終了。

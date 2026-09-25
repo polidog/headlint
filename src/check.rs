@@ -55,7 +55,7 @@ struct Fetched {
 static AGENT: LazyLock<ureq::Agent> = LazyLock::new(|| {
     ureq::AgentBuilder::new()
         .timeout(Duration::from_secs(10))
-        .user_agent("Mozilla/5.0 (compatible; seo-checker/0.1)")
+        .user_agent("Mozilla/5.0 (compatible; headlint/0.1)")
         .build()
 });
 

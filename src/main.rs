@@ -98,7 +98,7 @@ fn run(term: &mut ratatui::DefaultTerminal, url: &str, secs: &[Section]) -> std:
     }
 }
 
-const USAGE: &str = "usage: seo-checker [--json] [--validate] <url>
+const USAGE: &str = "usage: headlint [--json] [--validate] <url>
 
   (なし)      TUI で表示
   --json      結果を JSON で標準出力
