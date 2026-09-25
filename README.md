@@ -1,31 +1,32 @@
 # headlint
 
-ページの `<head>`（OGP・title・favicon・canonical・meta robots）と robots.txt を lint する TUI / CLI ツール。
-
+A TUI / CLI tool that lints a page's `<head>` (OGP, title, favicon, canonical, meta robots) and its robots.txt.
 
 ```
 cargo install --git https://github.com/polidog/headlint
 ```
 
-## 使い方
+## Usage
 
 ```
-headlint polidog.jp                     # TUI で表示
-headlint --json polidog.jp              # JSON で出力
-headlint --validate polidog.jp          # テキストで出力し、✗ があれば exit 1
-headlint --json --validate polidog.jp   # JSON で出力し、✗ があれば exit 1
+headlint polidog.jp                     # show results in the TUI
+headlint --json polidog.jp              # print results as JSON
+headlint --validate polidog.jp          # print results as text, exit 1 if any ✗
+headlint --json --validate polidog.jp   # print JSON, exit 1 if any ✗
 ```
 
-TUI のキー: `←/→` `h/l` `Tab` でタブ切替、`↑/↓` `j/k` `PgUp/PgDn` でスクロール、`q` で終了。
+TUI keys: `←/→` `h/l` `Tab` to switch tabs, `↑/↓` `j/k` `PgUp/PgDn` to scroll, `q` to quit.
 
-## チェック内容
+Check messages are currently in Japanese.
 
-判定は ✓ 問題なし / ! 注意 / ✗ 問題あり / - 参考情報。
+## Checks
 
-- **OGP**: title（長さ）、description、og:\*、twitter:\*、og:image の取得とサイズ（推奨 1200x630・1.91:1、最小 200x200、宣言値との食い違い）
-- **Favicon**: `link rel` に icon を含むもの・manifest の取得、`/favicon.ico`
-- **Robots**: HTTP ステータス、meta robots / googlebot、X-Robots-Tag、canonical、robots.txt（ステータス・Content-Type・このURLのクロール可否・Sitemap の取得）
-- **robots.txt**: 本文
+Each result is ✓ ok / ! warning / ✗ error / - info.
+
+- **OGP**: title (length), description, og:\*, twitter:\*, and og:image fetch and size (recommended 1200x630 at 1.91:1, minimum 200x200, mismatch with declared og:image:width/height)
+- **Favicon**: fetches every `link` whose `rel` contains `icon`, the manifest, and `/favicon.ico`
+- **Robots**: HTTP status, meta robots / googlebot, X-Robots-Tag, canonical, and robots.txt (status, Content-Type, whether this URL is crawlable, Sitemap fetch)
+- **robots.txt**: the raw file
 
 ## JSON
 
@@ -34,7 +35,7 @@ TUI のキー: `←/→` `h/l` `Tab` でタブ切替、`↑/↓` `j/k` `PgUp/PgD
   "sections": [ { "name": "OGP", "items": [ { "label": "og:title", "level": "ok", "value": "..." } ] } ] }
 ```
 
-`level` は `ok` / `warn` / `ng` / `info`。`ok` は `ng` が 1 つもないとき `true`。
+`level` is one of `ok` / `warn` / `ng` / `info`. `ok` is `true` when there is no `ng`.
 
 ## License
 
