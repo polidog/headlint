@@ -32,7 +32,8 @@ Each result is ✓ ok / ! warning / ✗ error / - info.
 
 ```json
 { "url": "...", "ok": true,
-  "sections": [ { "name": "OGP", "items": [ { "label": "og:title", "level": "ok", "value": "..." } ] } ] }
+  "sections": [ { "name": "OGP", "items": [ { "label": "og:title", "level": "ok", "value": "..." } ] } ],
+  "robots_txt": "User-agent: *\n..." }
 ```
 
 `level` is one of `ok` / `warn` / `ng` / `info`. `ok` is `true` when there is no `ng`.
