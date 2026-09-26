@@ -15,7 +15,11 @@ pub const MAX_BODY: usize = 5 << 20;
 static AGENT: LazyLock<ureq::Agent> = LazyLock::new(|| {
     ureq::AgentBuilder::new()
         .timeout(Duration::from_secs(10))
-        .user_agent("Mozilla/5.0 (compatible; headlint/0.1)")
+        .user_agent(concat!(
+            "Mozilla/5.0 (compatible; headlint/",
+            env!("CARGO_PKG_VERSION"),
+            ")"
+        ))
         // ureq 2 は Happy Eyeballs が無く、IPv6 の SYN が落ちる環境だと並列接続で 1〜4 秒詰まる。
         // IPv4 を先に試す（IPv6 は後ろに残すので IPv6 only のホストにも繋がる）
         .resolver(|addr: &str| {
